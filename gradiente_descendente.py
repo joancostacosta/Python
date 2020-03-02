@@ -1,3 +1,4 @@
+# GRADIENT DESCENDENT
 import matplotlib.pyplot as plt
 from numpy.random import randint
 from numpy import linspace
