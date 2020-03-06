@@ -1,6 +1,17 @@
 # CALCUL DE DIETES
 import numpy as np
 import random as rnd
+import matplotlib.pyplot as plt
+
+# funció de cost
+def Cost():
+    #processem tots els elements de la dieta (D)
+    with np.nditer(D, flags=['multi_index']) as it:
+        while not it.finished:
+            idx = it.multi_index
+            print(idx[2], D[idx])
+            it.iternext()
+    return JR * AP
 
 JR = 7   # nro. de jornades de la dieta
 AP = 4   # nro. d'àpats per jornada
@@ -41,6 +52,9 @@ CMP[4][3]=8.7
 
 # muntem la matriu dieta (D) de quantitats d'aliment: 
 # jornades x àpats x aliments
+#D = np.random.rand(JR, AP, len(Aliments))
+#print(D)
+
 D = np.zeros( (JR, AP, len(Aliments)))
 
 with np.nditer(D, flags=['multi_index'], op_flags=['readwrite']) as it:
@@ -50,3 +64,5 @@ with np.nditer(D, flags=['multi_index'], op_flags=['readwrite']) as it:
         it.iternext()
 
 print(D)
+
+print(Cost())
