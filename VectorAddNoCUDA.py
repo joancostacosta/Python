@@ -19,7 +19,7 @@ def main():
     print("C[:5] = " + str(C[:5])) 
     print("C[-5:] = " + str(C[-5:]))
 
-    print("VectorAdd took for % seconds" % vector_add_time)
+    print("VectorAdd took for %s seconds" % vector_add_time)
 
 if __name__=='__main__':
     main()
