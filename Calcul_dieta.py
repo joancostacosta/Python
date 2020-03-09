@@ -9,6 +9,7 @@ AP = 4   # nro. d'àpats per jornada
 # capa de neurones
 class capa_neural():
 
+    # parametres: nro. connexions d'entrada a cada neurona, nro de neurones, funcio d'activacio
     def __init__(self, n_con_entr, n_neurones, f_activ):
         # inicialitzem vector bias entre -1 i 1
         self.b = np.random.rand(1, n_neurones) * 2 - 1    
@@ -43,9 +44,20 @@ def Cost(D):
 def entrena(xn, De, Ds, f_cost, lr=0.5):
 
     # forward pass
-    z = De @ xn[0].W + xn[0].b
-    a = xn[0].f_activ(z)
-    print(a)
+    # capa d'entrada
+    _ze = De @ xn[0].W + xn[0].b
+    _ae = xn[0].f_activ[0](_ze)
+    # capa de sortida
+    _zs = _ae @ xn[1].W + xn[1].b
+    _as = xn[1].f_activ[0](_zs)  
+
+    print(_as)
+    # calcul de la funcio de cost de la sortida de la darrera capa
+
+    # backpropagation per obtenir les derivades parcials de la funcio de cost respecte als parametres de les neurones
+
+    # aplicar el gradient descent i ajustar els parametres de les neurones
+
 
 # PROGRAMA PRINCIPAL
 def main():
@@ -105,17 +117,18 @@ def main():
             D[idx] = rnd.random() * 10
             it.iternext()
 
-    #print(D)
+    print(D)
 
     # creem les capes d'entrada i de sortida de la XN
-    ce = capa_neural(JR*AP*len(Aliments), JR*AP, relu)
-    cs = capa_neural(JR*AP*JR*AP*len(Aliments), JR*AP*len(Aliments), relu)
+    ce = capa_neural(len(Aliments), JR*AP, relu)
+    cs = capa_neural(JR*AP, JR*AP*len(Aliments), relu)
 
     # creem la XN
     xn = []
     xn.append(ce)
     xn.append(cs)
     
+    entrena(xn, D, D, Cost, 0.5)
     #print(Cost(D))
 
 # CRIDEM AL PROGRAMA PRINCIPAL
