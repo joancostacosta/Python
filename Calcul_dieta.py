@@ -51,12 +51,29 @@ def entrena(xn, De, Ds, f_cost, lr=0.5):
     _zs = _ae @ xn[1].W + xn[1].b
     _as = xn[1].f_activ[0](_zs)  
 
-    print(_as)
+    #print("_as: "+str(_as.ndim) + ' dimensions ' + str(len(_as)) + "x" + str(len(_as[0])) + "x" + str(len(_as[0][0])))
+
+    imprimeix_dim("xn[0].W", xn[0].W)
+    imprimeix_dim("xn[0].b", xn[0].b)
+    imprimeix_dim("_ze", _ze)
+    imprimeix_dim("_ae", _ae)
+    imprimeix_dim("xn[1].W", xn[1].W)
+    imprimeix_dim("xn[1].b", xn[1].b)
+    imprimeix_dim("_zs", _zs)
+    imprimeix_dim("_as", _as)
+
+    #print(_as)
     # calcul de la funcio de cost de la sortida de la darrera capa
 
     # backpropagation per obtenir les derivades parcials de la funcio de cost respecte als parametres de les neurones
 
     # aplicar el gradient descent i ajustar els parametres de les neurones
+
+def imprimeix_dim(nom, matriu):
+    d = matriu.ndim
+    print(nom + " : " + str(d) + " dimensions ")
+    for x in range(0, d, 1):
+        print("dim "+ str(x+1) +" : "+ str(np.size(matriu,x)))
 
 
 # PROGRAMA PRINCIPAL
@@ -117,12 +134,13 @@ def main():
             D[idx] = rnd.random() * 10
             it.iternext()
 
-    print(D)
+    imprimeix_dim("D", D)
+    #print("D: "+str(D.ndim)+ ' dimensions '+str(len(D))+"x"+str(len(D[0]))+"x"+str(len(D[0][0])))
 
     # creem les capes d'entrada i de sortida de la XN
     ce = capa_neural(len(Aliments), JR*AP, relu)
-    cs = capa_neural(JR*AP, JR*AP*len(Aliments), relu)
-
+    #cs = capa_neural(JR*AP, JR*AP*len(Aliments), relu)
+    cs = capa_neural(JR*AP, len(Aliments), relu)
     # creem la XN
     xn = []
     xn.append(ce)
