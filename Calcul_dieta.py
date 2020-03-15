@@ -62,11 +62,12 @@ def main():
     with np.nditer(D, flags=['multi_index'], op_flags=['readwrite']) as it:
         while not it.finished:
             idx = it.multi_index
-            # PENDENT: cal fer random entre els valors max i min d'aliment per àpat, normatizats: minim = -1 i maxim = +1
-            D[idx] = rnd.random() * 10  
+            # PENDENT: cal fer random entre els valors max i min d'aliment per àpat, normatizats: minim = 0 i maxim = 1
+            D[idx] = rnd.random()   
             it.iternext()
 
     imprimeix_dim("D", D)
+    print(D)
 
     # creem les capes d'ENTRADA i de SORTIDA de la XN
     # matriu de pesos capa d'ENTRADA "We" (3 dimensions: j x m x a)
@@ -90,19 +91,19 @@ def main():
     # capa d'entrada
     Ze = np.einsum('ijn,ijn->ij', We, D) + Be
     imprimeix_dim("Ze", Ze)
-    print(Ze)
+    #print(Ze)
     Se = fe[0](Ze)
     imprimeix_dim("Se", Se)
-    print(Se)
+    #print(Se)
     # capa de sortida
     Zs = np.einsum('ijklm,lm->ijk', Ws, Se) + Bs
     imprimeix_dim("Zs", Zs)
-    print(Zs)
+    #print(Zs)
     Ss = fs[0](Zs)
     imprimeix_dim("Ss", Ss)
     print(Ss)
 
-    # calcul de la funcio de cost de la sortida de la darrera capa
+    # calcul de la funcio de cost de la sortida de la darrera capa "Ss"
 
     # backpropagation per obtenir les derivades parcials de la funcio de cost respecte als parametres de les neurones
 

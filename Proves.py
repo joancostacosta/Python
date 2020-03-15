@@ -1,19 +1,24 @@
 import numpy as np
+import matplotlib.pyplot as pyplot
 
-def imprimeix_dim(nom, matriu):
-    d = matriu.ndim
-    print(nom + " : " + str(d) + " dimensions ")
-    for x in range(0, d, 1):
-        print("dim "+ str(x+1) +" : "+ str(np.size(matriu,x)))
+def ri(x):
+    return 1 - np.e ** (-((x - 1.5)**2)/(2*0.5**2))
 
+# Valores del eje X que toma el gráfico.
+#x = range(0, 5, 0.001)
+x = np.linspace(0, 5, 5000)
 
-D = np.ones((7, 4, 5))  # DIETA jornades, menjars, aliments
-W = np.random.randint(0, 10, (7, 4, 5))  # PESOS jornades, menjars, aliments
+# Graficar funcion
+pyplot.plot(x, [ri(i) for i in x])
 
-print(W)
-print(D)
-#WD = np.dot(W, D)
-WD = np.einsum('ijn,ijn->ij', W, D)
+# Establecer el color de los ejes.
+pyplot.axhline(0, color="black")
+pyplot.axvline(0, color="black")
 
-imprimeix_dim("WD", WD)
-print(WD)
+# Limitar los valores de los ejes.
+pyplot.xlim(0, 5)
+pyplot.ylim(-1, 2)
+# Guardar gráfico como imágen PNG.
+#pyplot.savefig("output.png")
+# Mostrarlo.
+pyplot.show()
