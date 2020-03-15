@@ -44,41 +44,11 @@ def Cost(D):
             it.iternext()
     return JR * MJ
 
-'''# funció d'entrenament
-def entrena(xn, De, Ds, f_cost, lr=0.5):
-
-    # forward pass
-    # capa d'entrada
-    _ze = De @ xn[0].W + xn[0].b
-    _ae = xn[0].f_activ[0](_ze)
-    # capa de sortida
-    _zs = _ae @ xn[1].W + xn[1].b
-    _as = xn[1].f_activ[0](_zs)  
-
-    #print("_as: "+str(_as.ndim) + ' dimensions ' + str(len(_as)) + "x" + str(len(_as[0])) + "x" + str(len(_as[0][0])))
-
-    imprimeix_dim("xn[0].W", xn[0].W)
-    imprimeix_dim("xn[0].b", xn[0].b)
-    imprimeix_dim("_ze", _ze)
-    imprimeix_dim("_ae", _ae)
-    imprimeix_dim("xn[1].W", xn[1].W)
-    imprimeix_dim("xn[1].b", xn[1].b)
-    imprimeix_dim("_zs", _zs)
-    imprimeix_dim("_as", _as)
-
-    #print(_as)
-    # calcul de la funcio de cost de la sortida de la darrera capa
-
-    # backpropagation per obtenir les derivades parcials de la funcio de cost respecte als parametres de les neurones
-
-    # aplicar el gradient descent i ajustar els parametres de les neurones'''
-
 def imprimeix_dim(nom, matriu):
     d = matriu.ndim
     print(nom + " : " + str(d) + " dimensions ")
     for x in range(0, d, 1):
         print("dim "+ str(x+1) +" : "+ str(np.size(matriu,x)))
-
 
 # PROGRAMA PRINCIPAL
 def main():
@@ -92,26 +62,29 @@ def main():
     with np.nditer(D, flags=['multi_index'], op_flags=['readwrite']) as it:
         while not it.finished:
             idx = it.multi_index
-            # PENDENT: cal fer random entre els valors max i min d'aliment per àpat
+            # PENDENT: cal fer random entre els valors max i min d'aliment per àpat, normatizats: minim = -1 i maxim = +1
             D[idx] = rnd.random() * 10  
             it.iternext()
 
     imprimeix_dim("D", D)
 
     # creem les capes d'ENTRADA i de SORTIDA de la XN
-    # matriu de pesos capa d'ENTRADA "We" (3 dimensions: a x (j x m))
-    We = np.random.rand(JR, MJ, len(Aliments))
+    # matriu de pesos capa d'ENTRADA "We" (3 dimensions: j x m x a)
+    We = np.random.rand(JR, MJ, len(Aliments)) * 2 - 1
     # matriu de bias capa d'ENTRADA "Be" (2 dimensions: j x m)
-    Be = np.random.rand(JR, MJ)
+    Be = np.random.rand(JR, MJ) * 2 - 1
     # funció d'activació capa d'ENTRADA "fe"
-    fe = relu
+    fe = sigm
 
-    '''# matriu de pesos capa de SORTIDA "Ws" (5 dimensions: (j x m x a) x (j x m))
-    Ws = np.random.rand(JR, MJ, len(Aliments), JR, MJ)
+    #print(We)
+    #print(Be)
+
+    # matriu de pesos capa de SORTIDA "Ws" (5 dimensions: (j x m x a) x (j x m))
+    Ws = np.random.rand(JR, MJ, len(Aliments), JR, MJ) * 2 - 1
     # matriu de bias capa de SORTIDA "Bs" (3 dimensions: j x m x a)
-    Bs = np.random.rand(JR, MJ, len(Aliments))
+    Bs = np.random.rand(JR, MJ, len(Aliments)) * 2 - 1
     # funció d'activació capa de SORTIDA "fs"
-    fs = relu'''
+    fs = relu
 
     # forward pass
     # capa d'entrada
@@ -122,10 +95,12 @@ def main():
     imprimeix_dim("Se", Se)
     print(Se)
     # capa de sortida
-    '''Z = Se @ Ws + Bs
-    imprimeix_dim("Z", Z)
-    S = fs[0](Z)  
-    imprimeix_dim("S", S)'''
+    Zs = np.einsum('ijklm,lm->ijk', Ws, Se) + Bs
+    imprimeix_dim("Zs", Zs)
+    print(Zs)
+    Ss = fs[0](Zs)
+    imprimeix_dim("Ss", Ss)
+    print(Ss)
 
     # calcul de la funcio de cost de la sortida de la darrera capa
 
