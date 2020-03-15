@@ -18,6 +18,20 @@ sigm = (lambda x: 1 / (1 + np.e ** (-x)),
 relu = (lambda x: np.maximum(0, x),
         lambda x: np.where(x > 0, 1, 0))
 
+# classe restricció
+class Restriccio:
+    def __init__(self, ambit, entitat, tipo, cpte, cpteRef, maxim, minim):
+        self.ambit = ambit
+        self.entitat = entitat
+        self.tipo = tipo
+        self.cpte = cpte
+        self.cpteRef = cpteRef
+        self.maxim = maxim
+        self.minim = minim
+
+    def desv(self, D):
+        # calcular la desviació de la restriccio per la dieta
+        return 1
 
 # inicialitzam variables i estructures
 def inicialitza():
@@ -88,14 +102,14 @@ def main():
     fs = relu
 
     # forward pass
-    # capa d'entrada
+    # capa d'ENTRADA
     Ze = np.einsum('ijn,ijn->ij', We, D) + Be
     imprimeix_dim("Ze", Ze)
     #print(Ze)
     Se = fe[0](Ze)
     imprimeix_dim("Se", Se)
     #print(Se)
-    # capa de sortida
+    # capa de SORTIDA
     Zs = np.einsum('ijklm,lm->ijk', Ws, Se) + Bs
     imprimeix_dim("Zs", Zs)
     #print(Zs)
