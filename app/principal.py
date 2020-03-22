@@ -49,7 +49,7 @@ def main():
 
     utl.imprimeix_dim("D", D)
     print(D)
-    print("cost de D: " + str(cst.cost(D)))
+    #print("cost de D: " + str(cst.cost(D)))
 
     # creem les capes d'ENTRADA i de SORTIDA de la XN
     # matriu de pesos capa d'ENTRADA "We" (3 dimensions: j x m x a)
@@ -84,7 +84,8 @@ def main():
     Ss = fs[0](Zs)
     utl.imprimeix_dim("Ss", Ss)
     print(Ss)
-    print("cost de Ss: " + str(cst.cost(Ss)))
+    #print("cost de Ss: " + str(cst.cost(Ss)))
+    
     # calcul de la funcio de cost de la sortida de la darrera capa "Ss"
 
     # backpropagation per obtenir les derivades parcials de la funcio de cost respecte als parametres de les neurones
