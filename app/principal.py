@@ -1,8 +1,11 @@
 # CALCUL DE DIETES
+
+# importem libreries externes
 import numpy as np
 import random as rnd
 import matplotlib.pyplot as plt
 
+# importem moduls interns
 import moduls.restriccions as rst
 import moduls.funcactivacio as fac
 import moduls.utils as utl

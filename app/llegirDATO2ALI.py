@@ -71,7 +71,7 @@ with open('elements.json', 'w') as outfile:
     json.dump(elemsJSONData, outfile)
     outfile.close()
 
-'''# recuperem els elements del JSON
+'''# recuperem els elements del JSON file
 with open('elements.json') as jsonfile:
     elemsJSONDataIn = json.load(jsonfile)
     jsonfile.close()
@@ -98,3 +98,5 @@ print(elemsJSON)
 
 jselems = json.dumps(elems)
 print(jselems)'''
+
+# Carreguem els objectes Element del fitxer JSON
