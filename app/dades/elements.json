@@ -1,1 +1,78 @@
-"[\n    {\n        \"nom\": \"Calories\",\n        \"unitat\": \"cal\"\n    },\n    {\n        \"nom\": \"Prote\u00efnes\",\n        \"unitat\": \"gr\"\n    },\n    {\n        \"nom\": \"Hidr.Carboni\",\n        \"unitat\": \"gr\"\n    },\n    {\n        \"nom\": \"Greixos\",\n        \"unitat\": \"gr\"\n    },\n    {\n        \"nom\": \"Gr.Saturats\",\n        \"unitat\": \"gr\"\n    },\n    {\n        \"nom\": \"Gr.Insaturats\",\n        \"unitat\": \"gr\"\n    },\n    {\n        \"nom\": \"Colesterol\",\n        \"unitat\": \"mg\"\n    },\n    {\n        \"nom\": \"Fibra\",\n        \"unitat\": \"gr\"\n    },\n    {\n        \"nom\": \"Sodi\",\n        \"unitat\": \"gr\"\n    },\n    {\n        \"nom\": \"Potasi\",\n        \"unitat\": \"mg\"\n    },\n    {\n        \"nom\": \"Cal\u00e7\",\n        \"unitat\": \"mg\"\n    },\n    {\n        \"nom\": \"F\u00f3sfor\",\n        \"unitat\": \"mg\"\n    },\n    {\n        \"nom\": \"Magnesi\",\n        \"unitat\": \"mg\"\n    },\n    {\n        \"nom\": \"Ferro\",\n        \"unitat\": \"mg\"\n    },\n    {\n        \"nom\": \"Vitam. A\",\n        \"unitat\": \"mg\"\n    },\n    {\n        \"nom\": \"Vitam. B1\",\n        \"unitat\": \"mg\"\n    },\n    {\n        \"nom\": \"Riboflavina\",\n        \"unitat\": \"mg\"\n    },\n    {\n        \"nom\": \"Niacina\",\n        \"unitat\": \"mg\"\n    },\n    {\n        \"nom\": \"Vitam. C\",\n        \"unitat\": \"mg\"\n    }\n]"
+[
+    {
+        "nom": "Calories",
+        "unitat": "cal"
+    },
+    {
+        "nom": "Proteïnes",
+        "unitat": "gr"
+    },
+    {
+        "nom": "Hidr.Carboni",
+        "unitat": "gr"
+    },
+    {
+        "nom": "Greixos",
+        "unitat": "gr"
+    },
+    {
+        "nom": "Gr.Saturats",
+        "unitat": "gr"
+    },
+    {
+        "nom": "Gr.Insaturats",
+        "unitat": "gr"
+    },
+    {
+        "nom": "Colesterol",
+        "unitat": "mg"
+    },
+    {
+        "nom": "Fibra",
+        "unitat": "gr"
+    },
+    {
+        "nom": "Sodi",
+        "unitat": "gr"
+    },
+    {
+        "nom": "Potasi",
+        "unitat": "mg"
+    },
+    {
+        "nom": "Calç",
+        "unitat": "mg"
+    },
+    {
+        "nom": "Fósfor",
+        "unitat": "mg"
+    },
+    {
+        "nom": "Magnesi",
+        "unitat": "mg"
+    },
+    {
+        "nom": "Ferro",
+        "unitat": "mg"
+    },
+    {
+        "nom": "Vitam. A",
+        "unitat": "mg"
+    },
+    {
+        "nom": "Vitam. B1",
+        "unitat": "mg"
+    },
+    {
+        "nom": "Riboflavina",
+        "unitat": "mg"
+    },
+    {
+        "nom": "Niacina",
+        "unitat": "mg"
+    },
+    {
+        "nom": "Vitam. C",
+        "unitat": "mg"
+    }
+]

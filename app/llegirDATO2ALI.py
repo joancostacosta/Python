@@ -20,14 +20,14 @@ ne = len(elem)
 elems = []
 for i in range(ne):
     elems.append(al.Element(elem[i], unit[i]))
-print(elems[0].nom)
-print(elems[ne-1].nom)
+#print(elems[0].nom)
+#print(elems[ne-1].nom)
 
 # muntem la taula d'aliments i composició
 alims = []
 i = 0
 j = 0
-with open('DATO2ALI.DAT', encoding="CP437", errors="surrogateescape") as f: # , encoding='utf-8'
+with open('DATO2ALI.DAT', encoding="CP437", errors="surrogateescape") as f: 
     while True:
         buf = f.read(stru[i])
         if not buf:
@@ -38,16 +38,17 @@ with open('DATO2ALI.DAT', encoding="CP437", errors="surrogateescape") as f: # , 
         elif i == 1:
             # nou aliment
             alim = al.Aliment(buf)
-            print("nou aliment: " + alim.nom) 
+            alim.unitat = 'gr'
+            #print("nou aliment: " + alim.nom) 
             j = 0
         elif i == 2:
             # afegim grup
             alim.grup = buf
-            print("grup aliment: " + alim.grup) 
+            #print("grup aliment: " + alim.grup) 
         else:
-            # afegim components
+            # afegim components (quantitats origen x 100 grs)
             try:
-                c = float(buf)
+                c = round(float(buf) / 100, 5)
             except:
                 print("error buf a float: " + alim.nom + str(j) + buf)
             else:
@@ -62,20 +63,44 @@ with open('DATO2ALI.DAT', encoding="CP437", errors="surrogateescape") as f: # , 
     f.close()
 #print(alims)
 
-# convertim la list d'objectes Element a JSON
+'''# write to a file
+with open("4forces.json","w") as f:
+  json.dump(d, f)
+
+# reads it back
+with open("4forces.json","r") as f:
+  d = json.load(f)'''
+
+with open("elements.json","w") as f:
+  json.dump(elems, f, indent=4, cls=Encoder, ensure_ascii=False)
+  f.close()
+'''with open('elements.json') as jsonfile:
+    elemsJSONDataIn = json.load(jsonfile)
+    jsonfile.close()
+print(elemsJSONDataIn)'''
+
+with open("aliments.json","w") as f:
+  json.dump(alims, f, indent=4, cls=Encoder, ensure_ascii=False)
+  f.close()
+'''with open('aliments.json') as jsonfile:
+    alimsJSONDataIn = json.load(jsonfile)
+    jsonfile.close()
+print(alimsJSONDataIn)'''
+
+'''# convertim la list d'objectes Element a JSON
 elemsJSONData = json.dumps(elems, indent=4, cls=Encoder, ensure_ascii=False)
-#print(elemsJSONData)
+print(elemsJSONData)
 
 # guardem el JSON dels Element
 with open('elements.json', 'w') as outfile:
     json.dump(elemsJSONData, outfile)
     outfile.close()
 
-'''# recuperem els elements del JSON file
+# recuperem els elements del JSON file
 with open('elements.json') as jsonfile:
     elemsJSONDataIn = json.load(jsonfile)
     jsonfile.close()
-print(elemsJSONDataIn)'''
+print(elemsJSONDataIn)
 
 # convertim la list d'objectes Aliment a JSON
 alimsJSONData = json.dumps(alims, indent=4, cls=Encoder, ensure_ascii=False)
@@ -86,7 +111,7 @@ with open('aliments.json', 'w') as outfile:
     json.dump(alimsJSONData, outfile)
     outfile.close()
 
-''' # recuperem els aliments del JSON
+# recuperem els aliments del JSON
 with open('aliments.json') as jsonfile:
     alimsJSONDataIn = json.load(jsonfile)
     jsonfile.close()

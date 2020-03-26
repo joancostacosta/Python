@@ -16,7 +16,5 @@ class Aliment:
         self.nom = nom
         self.grup = ''
         self.unitat = ''
-        self.maxapat = 0
-        self.minapat = 0
         self.composicio = []
 
