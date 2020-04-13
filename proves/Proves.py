@@ -7,6 +7,9 @@ st = 0.25   # desv. std. = distancia del punt central on la funció val la meita
 Ri = (lambda x: 1 - np.e ** (-((x - pc)**2)/(2*st**2)), 
     lambda x: ((x-pc)/st**2) * np.e ** (-((x - pc)**2)/(2*st**2)) )
 
+#Ri = (lambda x: 1 / (1 + np.e ** (-x)), 
+#        lambda x: (1 / (1 + np.e ** (-x))) * (1 - (1 / (1 + np.e ** (-x)))) )
+
 # Valores del eje X que toma el gráfico.
 #x = range(0, 5, 0.001)
 x = np.linspace(0, pc+st*4, 5000)
