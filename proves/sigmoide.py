@@ -1,9 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as pyplot
 
+centre = 0.0
+stdev = 1.0
 
-Ri = (lambda x: 1 / (1 + np.e ** (-x)), 
-        lambda x: (1 / (1 + np.e ** (-x))) * (1 - (1 / (1 + np.e ** (-x)))) )
+Ri = (lambda x: 1 / (1 + np.e ** ((centre-x)/stdev**2)), 
+        lambda x: (1 / (1 + np.e ** ((centre-x)/stdev**2))) * (1 - (1 / (1 + np.e ** ((centre-x)/stdev**2)))) )
 
 # Valores del eje X que toma el gráfico.
 #x = range(0, 5, 0.001)
